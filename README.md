@@ -143,3 +143,33 @@ A large image averaged on 50 square size:
 A large image averaged on 100 square size:
 
 ![alt text](src/output/single_thread_100.jpg)
+
+
+## Requirements before running
+
+***1. Java Development Kit (JDK)***: minimum version JDK 8, recommended 11 or later.
+***2. Added to PATH:*** Ensure javac and java commands are available in your system’s PATH.
+
+## How to Run
+
+*NOTE:* adding the file path could be simplified to get only a name (such as large or small), but it is left as relevant path so that it is easier for the user if they want to add their own images for testing.
+
+1. Clone the repository:
+
+```git clone git@github.com:ADA-GWU/3-concurrency-AsmarHajizada.git```
+
+2. Navigate to the source folder:
+
+```cd src/```
+
+3. Inside the source folder, compile the java codes:
+
+```javac -d . imageprocessor/**/*.java```
+
+4. Run the program following this structure:
+
+```java imageprocessor.Main <file name> <square size> <mode>```
+
+For example, if you want to run the large image on size 200 and Multi-threaded mode, type and run:
+
+```java imageprocessor.Main input/large.png 200 M```
