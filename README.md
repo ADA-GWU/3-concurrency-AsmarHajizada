@@ -91,10 +91,10 @@ This class contains most of the helper functions like loading and resizing image
 
 Here are the functions that provides the utilities mentioned above:
 
- -***loadImage***: loads the input image from the specified file path.
- -***resizeImage***: resizes the image to fit within the maximum screen dimensions (for display).
- -***calculateAverageColor***: calculates the average color of each group of squares in the image.
- -***fillSquare***: fills the resulting square in the image with calculated color.
+ - ***loadImage***: loads the input image from the specified file path.
+ - ***resizeImage***: resizes the image to fit within the maximum screen dimensions (for display).
+ - ***calculateAverageColor***: calculates the average color of each group of squares in the image.
+ - ***fillSquare***: fills the resulting square in the image with calculated color.
 
 **2. [ScreenUtils.java](src/imageprocessor/utils/ScreenUtils.java)** 
 
