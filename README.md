@@ -104,23 +104,23 @@ Checks the screen size of the device and decides if the image will need resizing
 
 ## Running examples and Results 
 
-**Single-Threaded**
+### Single-Threaded
 
-This is how running an image that exceeds the maximum screen size looks like in single-threaded mode: 
+**This is how running an image that exceeds the maximum screen size looks like in single-threaded mode:**
 
 ![alt text](screenshots/large_single.png)
 
-Single-threaded mode with a smaller image:
+**Single-threaded mode with a smaller image:**
 
 ![alt text](screenshots/small_single.png)
 
-**Multi-Threaded**
+### Multi-Threaded
 
-This is how running an image that exceeds the maximum screen size looks like in multi-threaded mode: 
+**This is how running an image that exceeds the maximum screen size looks like in multi-threaded mode:** 
 
 ![alt text](screenshots/large_multi.png)
 
-Multi-threaded mode with a smaller image:
+**Multi-threaded mode with a smaller image:**
 
 ![alt text](screenshots/small_multi.png)
 
