@@ -12,13 +12,13 @@ The goal for this task is to processes images by dividing them into squares of a
 
  - Processes the image sequantially (left-to-right) from top to bottom.
  - Visualizes the progress dynamically in a resized window, if the image is larger than the screen size.
- - Saves the result in the [src/output](output/) folder
+ - Saves the result in the [output](src/output/) folder
 
 **2. Multi-Threaded Processing**
 
  - Divides the image into regions processed in parallel by multiple threads. 
  - Dynamically visualizes progress with simultaneous updates from multiple regions. Here, the initial approach (processing sequantially) was changed to different location for each core so that multi-threading's difference from single-threading could be shown, other than its speed.
- - Saves the result in the [src/output](output/) folder
+ - Saves the result in the [output](src/output/) folder
 
 **3. Visualization and Resizing**
 
@@ -54,4 +54,38 @@ java imageprocessor.Main input/large.png 50 M
 
 ### Components 
 
-**1.[Main.java](src/imageprocessor/Main.java)
+**1.[Main.java](src/imageprocessor/Main.java)** 
+
+The file that uses all the other classes and utilities. This file is the only one used for running the program.
+
+***Input arguments***: Gets input from command line for *input file name*, *square size*, and *processing mode (S / M)*.
+
+1. Loads the input image using ```ImageUtils.loadImage```. 
+
+2. Checks if resizing is required using ```ScreenUtils.needsResizing``` and resizes the image for visualization if needed. 
+
+3. Invokes either ```SingleThreadProcessor``` or ```MultiThreadProcessor``` based on the selected mode.
+
+**2. [SingleThreadProcessor.java](src/imageprocessor/SingleThreadProcessor.java)** 
+
+Handles the operation in mode 'S', meaning Single Threading. This one is slower and more sequential compared to the other mode.
+
+1. Divides the image into squares of the specified size. (*squareSize*)
+
+2. Calculates the average color for each square using ```ImageUtils.calculateAverageColor```.
+
+3. Updates the processed image and visualization.
+
+4. Saves the processed image with a name including the square size and threading mode (example: single_thread_100.jpg).
+
+**2. [MultiThreadProcessor.java](src/imageprocessor/MultiThreadProcessor.java)** 
+
+Handles the operation in mode 'M', meaning Multi Threading. This one is faster and process is horizontal as well as sequential.
+
+1. Divides the image into regions (horizontal slices) and assigns each region to a thread.
+
+2. Calculates the average color for each square using ```ImageUtils.calculateAverageColor```.
+
+3. Updates the processed image and visualization.
+
+4. Saves the processed image with a name including the square size and threading mode (example: multi_thread_50.jpg).
