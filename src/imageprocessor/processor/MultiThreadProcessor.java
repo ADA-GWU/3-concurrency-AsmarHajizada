@@ -11,6 +11,13 @@ import java.util.concurrent.Executors;
 import javax.imageio.ImageIO;
 
 public class MultiThreadProcessor {
+    /**
+     * Processes the image in multiple threads.
+     *
+     * @param originalImage 
+     * @param visualizationImage 
+     * @param squareSize 
+     */
     public static void processImage(BufferedImage originalImage, BufferedImage visualizationImage, int squareSize) {
         int width = originalImage.getWidth();
         int height = originalImage.getHeight();
@@ -28,7 +35,6 @@ public class MultiThreadProcessor {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
-        // Create ExecutorService
         int cores = Runtime.getRuntime().availableProcessors();
         ExecutorService executor = Executors.newFixedThreadPool(cores);
 
@@ -39,12 +45,17 @@ public class MultiThreadProcessor {
 
             for (int threadIndex = 0; threadIndex < cores; threadIndex++) {
                 final int startY = threadIndex * regionHeight;
-                final int endY = (threadIndex == cores - 1) ? height : startY + regionHeight;
+                int endY;
+
+                if (threadIndex == cores - 1) {
+                    endY = height;
+                } else {
+                    endY = startY + regionHeight;
+                }
 
                 executor.submit(() -> {
                     for (int y = startY; y < endY; y += squareSize) {
                         for (int x = 0; x < width; x += squareSize) {
-                            // process each square independently
                             Color averageColor = ImageUtils.calculateAverageColor(originalImage, x, y, squareSize, width, height);
                             ImageUtils.fillSquare(processedImage, x, y, squareSize, averageColor, width, height);
                         }

@@ -9,6 +9,13 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 public class SingleThreadProcessor {
+    /**
+     * Processes the image in a single thread.
+     *
+     * @param originalImage 
+     * @param visualizationImage 
+     * @param squareSize 
+     */
     public static void processImage(BufferedImage originalImage, BufferedImage visualizationImage, int squareSize) {
         int width = originalImage.getWidth();
         int height = originalImage.getHeight();

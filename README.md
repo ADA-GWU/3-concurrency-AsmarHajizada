@@ -24,14 +24,7 @@ The goal for this task is to processes images by dividing them into squares of a
 
  - Displays a the image as the averaging process happens. If the image size is bigger than the screen, displays processing for screen-fit visualization.
  - While it shows the resized image (if image is too big), the actual process is done on the original image at full resolution.
-
-
-javac -d . imageprocessor/*.java imageprocessor/utils/*.java imageprocessor/processor/*.java
-
-java imageprocessor.Main input/large.png 100 S
-
-java imageprocessor.Main input/large.png 50 M 
-
+ 
 
 ## Folder Structure
 ```
@@ -160,16 +153,16 @@ A large image averaged on 100 square size:
 
 2. Navigate to the source folder:
 
-```cd src/```
+    ```cd src/```
 
 3. Inside the source folder, compile the java codes:
 
-```javac -d . imageprocessor/**/*.java```
+    ```javac -d . imageprocessor/**/*.java```
 
 4. Run the program following this structure:
 
-```java imageprocessor.Main <file name> <square size> <mode>```
+    ```java imageprocessor.Main <file name> <square size> <mode>```
 
-For example, if you want to run the large image on size 200 and Multi-threaded mode, type and run:
+    For example, if you want to run the large image on size 200 and Multi-threaded mode, type and run:
 
-```java imageprocessor.Main input/large.png 200 M```
+    ```java imageprocessor.Main input/large.png 200 M```

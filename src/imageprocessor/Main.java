@@ -9,10 +9,14 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Main {
+    /**
+     * Main class to process the image.
+     * @param args The command line arguments.
+     */
     public static void main(String[] args) {
 
         ScreenUtils.printSystemInfo();
-        
+
         if (args.length < 3) {
             System.out.println("Usage: java Main <file name> <square size> <processing mode>");
             return;
