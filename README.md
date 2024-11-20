@@ -2,6 +2,26 @@
 
 javac -d . imageprocessor/*.java imageprocessor/utils/*.java imageprocessor/processor/*.java
 
-image resize
-gif 
-utils
+java imageprocessor.Main input/large.png 100 S
+
+java imageprocessor.Main input/large.png 50 M 
+
+
+### Folder Structure
+```
+└── src
+    ├── imageprocessor
+    │   ├── Main.java
+    │   ├── processor
+    │   │   ├── MultiThreadProcessor.java
+    │   │   └── SingleThreadProcessor.java
+    │   └── utils
+    │       ├── ImageUtils.java
+    │       └── ScreenUtils.java
+    ├── input
+    │   ├── large.png
+    │   └── small.jpg
+    └── output
+        ├── multi_thread_50.jpg
+        └── single_thread_100.jpg
+```
