@@ -22,9 +22,16 @@ public class Main {
             return;
         }
 
+        // Validate and parse input arguments
         String inputFile = args[0];
-        int squareSize = Integer.parseInt(args[1]);
-        String mode = args[2].toUpperCase(); // to accept lower case as well
+        int squareSize = validateSquareSize(args[1]);
+        if (squareSize <= 0) return;
+
+        String mode = args[2].toUpperCase();
+        if (!"S".equals(mode) && !"M".equals(mode)) {
+            System.out.println("Invalid mode. Use 'S' for single-threaded or 'M' for multi-threaded.");
+            return;
+        }
 
         try {
             BufferedImage originalImage = ImageUtils.loadImage(inputFile);
@@ -45,15 +52,33 @@ public class Main {
             if ("S".equals(mode)) {
                 System.out.println("Processing in single-threaded mode...");
                 SingleThreadProcessor.processImage(originalImage, visualizationImage, squareSize);
-            } else if ("M".equals(mode)) {
+            } else {
                 System.out.println("Processing in multi-threaded mode...");
                 MultiThreadProcessor.processImage(originalImage, visualizationImage, squareSize);
-            } else {
-                System.out.println("Invalid mode. Use 'S' for single-threaded or 'M' for multi-threaded.");
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("An error occurred during image processing: " + e.getMessage());
+            // e.printStackTrace();  // uncomment for debugging if needed
+        }
+    }
+
+    /**
+     * Validates and parses the square size from input arguments.
+     * @param squareSizeArg The square size as a string.
+     * @return Parsed square size, or 0 if invalid.
+     */
+    private static int validateSquareSize(String squareSizeArg) {
+        try {
+            int squareSize = Integer.parseInt(squareSizeArg);
+            if (squareSize <= 0) {
+                System.out.println("Square size must be a positive integer.");
+                return 0;
+            }
+            return squareSize;
+        } catch (NumberFormatException e) {
+            System.out.println("Square size must be an integer.");
+            return 0;
         }
     }
 }
