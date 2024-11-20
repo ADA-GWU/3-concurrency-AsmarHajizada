@@ -39,7 +39,7 @@ public class SingleThreadProcessor {
                     gVis.dispose();
 
                     imagePanel.setImage(visualizationImage);
-                    Thread.sleep(10); // for clearer visualization
+                    Thread.sleep(1); // for clearer visualization
                 }
             }
 

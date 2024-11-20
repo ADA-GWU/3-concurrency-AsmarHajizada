@@ -17,10 +17,10 @@ public class MultiThreadProcessor {
 
         BufferedImage processedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D gProcessed = processedImage.createGraphics();
-        gProcessed.drawImage(originalImage, 0, 0, null); // Initialize processed image
+        gProcessed.drawImage(originalImage, 0, 0, null); 
         gProcessed.dispose();
 
-        // Display the visualization image
+        // display the visualized image
         JFrame frame = new JFrame("Multi-Threaded Image Processing");
         ImageUtils.ImagePanel imagePanel = new ImageUtils.ImagePanel(visualizationImage);
         frame.add(imagePanel);
@@ -32,7 +32,7 @@ public class MultiThreadProcessor {
         int cores = Runtime.getRuntime().availableProcessors();
         ExecutorService executor = Executors.newFixedThreadPool(cores);
 
-        int regionHeight = height / cores; // Divide image into slices
+        int regionHeight = height / cores; // divide image into slices
 
         try {
             long startTime = System.nanoTime();
@@ -44,7 +44,7 @@ public class MultiThreadProcessor {
                 executor.submit(() -> {
                     for (int y = startY; y < endY; y += squareSize) {
                         for (int x = 0; x < width; x += squareSize) {
-                            // Process each square independently
+                            // process each square independently
                             Color averageColor = ImageUtils.calculateAverageColor(originalImage, x, y, squareSize, width, height);
                             ImageUtils.fillSquare(processedImage, x, y, squareSize, averageColor, width, height);
                         }
@@ -60,13 +60,13 @@ public class MultiThreadProcessor {
                 gVis.dispose();
                 imagePanel.setImage(visualizationImage);
 
-                Thread.sleep(10); // for clearer visualization
+                Thread.sleep(1); // for clearer visualization
             }
 
             long endTime = System.nanoTime();
             long durationMillis = (endTime - startTime) / 1_000_000;
 
-            // Save the final processed image
+            // save the final processed image
             String outputFilePath = "output/multi_thread_" + squareSize + ".jpg";
             ImageIO.write(processedImage, "jpg", new File(outputFilePath));
             System.out.println("Saved: " + outputFilePath);

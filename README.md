@@ -66,7 +66,7 @@ The file that uses all the other classes and utilities. This file is the only on
 
 3. Invokes either ```SingleThreadProcessor``` or ```MultiThreadProcessor``` based on the selected mode.
 
-**2. [SingleThreadProcessor.java](src/imageprocessor/SingleThreadProcessor.java)** 
+**2. [SingleThreadProcessor.java](src/imageprocessor/processor/SingleThreadProcessor.java)** 
 
 Handles the operation in mode 'S', meaning Single Threading. This one is slower and more sequential compared to the other mode.
 
@@ -78,7 +78,7 @@ Handles the operation in mode 'S', meaning Single Threading. This one is slower 
 
 4. Saves the processed image with a name including the square size and threading mode (example: single_thread_100.jpg).
 
-**2. [MultiThreadProcessor.java](src/imageprocessor/MultiThreadProcessor.java)** 
+**2. [MultiThreadProcessor.java](src/imageprocessor/processor/MultiThreadProcessor.java)** 
 
 Handles the operation in mode 'M', meaning Multi Threading. This one is faster and process is horizontal as well as sequential.
 
@@ -89,3 +89,57 @@ Handles the operation in mode 'M', meaning Multi Threading. This one is faster a
 3. Updates the processed image and visualization.
 
 4. Saves the processed image with a name including the square size and threading mode (example: multi_thread_50.jpg).
+
+**2. [ImageUtils.java](src/imageprocessor/utils/ImageUtils.java)** 
+
+This class contains most of the helper functions like loading and resizing image, calculating the color average, and displaying the image.
+
+Here are the functions that provides the utilities mentioned above:
+
+ -***loadImage***: loads the input image from the specified file path.
+ -***resizeImage***: resizes the image to fit within the maximum screen dimensions (for display).
+ -***calculateAverageColor***: calculates the average color of each group of squares in the image.
+ -***fillSquare***: fills the resulting square in the image with calculated color.
+
+**2. [ScreenUtils.java](src/imageprocessor/utils/ScreenUtils.java)** 
+
+Checks the screen size of the device and decides if the image will need resizing or not. Used by the Main class only. Has two helper functions:
+
+ - ***getMaxScreenSize***: returns maximum available screen size based on device.
+ - ***printSystemInfo***: prints out the number of cores and maximum dimensions for the device in the terminal screen.
+ - ***needsResizing***: returns a boolean value, *true* or *false*.
+
+## Running examples and Results 
+
+**Single-Threaded**
+
+This is how running an image that exceeds the maximum screen size looks like in single-threaded mode: 
+
+![alt text](screenshots/large_single.png)
+
+Single-threaded mode with a smaller image:
+
+![alt text](screenshots/small_single.png)
+
+**Multi-Threaded**
+
+This is how running an image that exceeds the maximum screen size looks like in multi-threaded mode: 
+
+![alt text](screenshots/large_multi.png)
+
+Multi-threaded mode with a smaller image:
+
+![alt text](screenshots/small_multi.png)
+
+*NOTE*: for some reason, while using small image in multi-processing mode, if we set the sleep time a bit too high (even 5-10), some squares are not properly visualized. But it saves the final image correctly. To not decrease the visualization result accuracy, the sleep time is set to 1 for now in ```MultiThreadProcessor```. For a fair comparison, same thing is applied in ```SingleThreadProcessor``` as well, however, visualization bug only happens in MultiThreading (does not affect SingleThreading even at much higher sleep time).
+
+
+### Result images
+
+A large image averaged on 50 square size:
+
+![alt text](src/output/single_thread_50.jpg)
+
+A large image averaged on 100 square size:
+
+![alt text](src/output/single_thread_100.jpg)

@@ -41,6 +41,7 @@ public class ScreenUtils {
      * @return True if resizing is needed, otherwise false.
      */
     public static boolean needsResizing(BufferedImage image) {
+        System.out.println("Image dimensions: " + image.getWidth() + "x" + image.getHeight());
         Dimension screenSize = getMaxScreenSize();
         return image.getWidth() > screenSize.width || image.getHeight() > screenSize.height;
     }
