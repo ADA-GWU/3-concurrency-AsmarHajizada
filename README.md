@@ -6,6 +6,8 @@
 
 The goal for this task is to processes images by dividing them into squares of a given size, averaging the colors within each square, and showing results for both Single-Threaded and Multi-Threaded mode. 
 
+If you prefer to run the project first, navigate to **[How to Run](#how-to-run)**.
+
 ## Features
 
 **1. Single-Threaded Processing**
