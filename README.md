@@ -24,7 +24,7 @@ The goal for this task is to processes images by dividing them into squares of a
 
  - Displays a the image as the averaging process happens. If the image size is bigger than the screen, displays processing for screen-fit visualization.
  - While it shows the resized image (if image is too big), the actual process is done on the original image at full resolution.
- 
+
 
 ## Folder Structure
 ```
@@ -47,7 +47,7 @@ The goal for this task is to processes images by dividing them into squares of a
 
 ### Components 
 
-**1.[Main.java](src/imageprocessor/Main.java)** 
+**1. [Main.java](src/imageprocessor/Main.java)** 
 
 The file that uses all the other classes and utilities. This file is the only one used for running the program.
 
@@ -141,15 +141,14 @@ A large image averaged on 100 square size:
 ## Requirements before running
 
 ***1. Java Development Kit (JDK)***: minimum version JDK 8, recommended 11 or later.
+
 ***2. Added to PATH:*** Ensure javac and java commands are available in your system’s PATH.
 
 ## How to Run
 
 *NOTE:* adding the file path could be simplified to get only a name (such as large or small), but it is left as relevant path so that it is easier for the user if they want to add their own images for testing.
 
-1. Clone the repository:
-
-```git clone git@github.com:ADA-GWU/3-concurrency-AsmarHajizada.git```
+1. Clone the repository.
 
 2. Navigate to the source folder:
 
