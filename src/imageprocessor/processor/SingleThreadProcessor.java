@@ -26,6 +26,9 @@ public class SingleThreadProcessor {
         frame.setVisible(true);
 
         try {
+
+            long startTime = System.nanoTime();
+
             for (int y = 0; y < height; y += squareSize) {
                 for (int x = 0; x < width; x += squareSize) {
                     Color averageColor = ImageUtils.calculateAverageColor(originalImage, x, y, squareSize, width, height);
@@ -36,13 +39,17 @@ public class SingleThreadProcessor {
                     gVis.dispose();
 
                     imagePanel.setImage(visualizationImage);
-                    Thread.sleep(50);
+                    Thread.sleep(10); // for clearer visualization
                 }
             }
+
+            long endTime = System.nanoTime();
+            long durationMillis = (endTime - startTime) / 1_000_000; 
 
             String outputFilePath = "output/single_thread_" + squareSize + ".jpg";
             ImageIO.write(processedImage, "jpg", new File(outputFilePath));
             System.out.println("Saved: " + outputFilePath);
+            System.out.println("Single-threaded processing took: " + durationMillis + " ms");
 
         } catch (Exception e) {
             e.printStackTrace();

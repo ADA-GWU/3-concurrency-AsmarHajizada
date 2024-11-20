@@ -20,6 +20,23 @@ public class ScreenUtils {
     }
 
     /**
+     * Prints system information such as number of cores and screen dimensions.
+     */
+    public static void printSystemInfo() {
+        // number of cores
+        int cores = Runtime.getRuntime().availableProcessors();
+
+        // dimensions
+        Dimension screenSize = getMaxScreenSize();
+
+        System.out.println("System Information:");
+        System.out.println("--------------------");
+        System.out.println("Number of CPU Cores: " + cores);
+        System.out.println("Maximum Screen Dimensions: " + screenSize.width + "x" + screenSize.height);
+        System.out.println("--------------------");
+    }
+
+    /**
      * Checks if the image needs to be resized based on screen dimensions.
      * @return True if resizing is needed, otherwise false.
      */

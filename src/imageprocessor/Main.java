@@ -10,6 +10,9 @@ import java.awt.image.BufferedImage;
 
 public class Main {
     public static void main(String[] args) {
+
+        ScreenUtils.printSystemInfo();
+        
         if (args.length < 3) {
             System.out.println("Usage: java Main <file name> <square size> <processing mode>");
             return;
@@ -17,7 +20,7 @@ public class Main {
 
         String inputFile = args[0];
         int squareSize = Integer.parseInt(args[1]);
-        String mode = args[2].toUpperCase();
+        String mode = args[2].toUpperCase(); // to accept lower case as well
 
         try {
             BufferedImage originalImage = ImageUtils.loadImage(inputFile);
